@@ -11,14 +11,9 @@ import { Component } from '@angular/core';
      <div>
      <input 
       type="text" 
-      [(ngModel)]="name"
+      #username
      >
-     <input 
-      type="text" 
-      [ngModel]="name"
-      (ngModelChange)="handleChange($event)"
-     >
-     <button (click)="handleClick()">Change Name</button>
+     <button (click)="handleClick(username.value)">Change Name</button>
      <p> {{ name }} </p>
      </div>
     </div> 
@@ -36,11 +31,7 @@ export class AppComponent {
     this.logo  = "img/logo-color.svg";
   }
 
-  handleChange(value: string) {
-    this.name = value;
-  }
-
-  handleClick() {
-    this.name = "Danya";
+  handleClick(value: string) {
+    console.log(value);
   }
 }
