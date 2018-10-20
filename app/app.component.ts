@@ -7,23 +7,22 @@ import { Component } from '@angular/core';
   ],
   template: ` 
     <div class='app'> 
-      {{ title }} <br>
-      {{ numberOne + numberTwo }} <br>
-      {{ isHappy ? ':)' : ':(' }}
+     <img [src]="logo" />
+     <h1 [innerHTML]="title"></h1>
+     <input type="text" [value]="name">
+     <p> {{ name }} </p>
     </div> 
   `
 })
 
 export class AppComponent {
   title: string;
-  numberOne: number;
-  numberTwo: number;
-  isHappy: boolean;
+  name: string;
+  logo: string;   
 
   constructor() {
     this.title = "Ultimate Angular";
-    this.numberOne = 1;
-    this.numberTwo = 2;
-    this.isHappy = false;
+    this.name  = "Danya";
+    this.logo  = "img/logo-color.svg";
   }
 }
