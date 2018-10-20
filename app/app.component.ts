@@ -6,17 +6,26 @@ import { Component } from '@angular/core';
     'app.component.scss'
   ],
   template: ` 
-    <div class='app'> 
-     <img [src]="logo" />
-     <div>
-     <input 
-      type="text" 
-      #username
-     >
-     <button (click)="handleClick(username.value)">Change Name</button>
-     <p> {{ name }} </p>
-     </div>
-    </div> 
+  <div class='app'> 
+    <img [src]="logo" />
+    <div>
+      <input 
+        type="text" 
+        [value]="name"
+        (input)="handleChange($event.target.value)"
+      >
+
+      <template [ngIf]="name.length > 2">
+        <div>
+          Searching for... {{ name }}
+        </div>
+      </template>
+
+      <div *ngIf="name.length > 2">
+        Searching for... {{ name }}
+      </div>
+    </div>
+  </div>
   `
 })
 
@@ -27,11 +36,11 @@ export class AppComponent {
 
   constructor() {
     this.title = "Ultimate Angular";
-    this.name  = "Danya D. Smith";
+    this.name = "";
     this.logo  = "img/logo-color.svg";
   }
 
-  handleClick(value: string) {
-    console.log(value);
+  handleChange(value: string) {
+    this.name = value;
   }
 }
