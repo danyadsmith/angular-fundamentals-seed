@@ -8,9 +8,16 @@ import { Component } from '@angular/core';
   template: ` 
     <div class='app'> 
      <img [src]="logo" />
-     <h1 [innerHTML]="title"></h1>
-     <input type="text" [value]="name">
+     <div>
+     <input 
+      type="text" 
+      [value]="name"
+      (blur)="handleBlur($event)"
+      (input)="handleInput($event)"
+     >
+     <button (click)="handleClick()">Change Name</button>
      <p> {{ name }} </p>
+     </div>
     </div> 
   `
 })
@@ -24,5 +31,17 @@ export class AppComponent {
     this.title = "Ultimate Angular";
     this.name  = "Danya";
     this.logo  = "img/logo-color.svg";
+  }
+
+  handleBlur(event: any) {
+    this.name = event.target.value;
+  }
+
+  handleInput(event: any) {
+    this.name = event.target.value;
+  }
+
+  handleClick() {
+    this.name = "Danya";
   }
 }
