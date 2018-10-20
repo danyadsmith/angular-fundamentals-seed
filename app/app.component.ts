@@ -11,9 +11,12 @@ import { Component } from '@angular/core';
      <div>
      <input 
       type="text" 
-      [value]="name"
-      (blur)="handleBlur($event)"
-      (input)="handleInput($event)"
+      [(ngModel)]="name"
+     >
+     <input 
+      type="text" 
+      [ngModel]="name"
+      (ngModelChange)="handleChange($event)"
      >
      <button (click)="handleClick()">Change Name</button>
      <p> {{ name }} </p>
@@ -29,16 +32,12 @@ export class AppComponent {
 
   constructor() {
     this.title = "Ultimate Angular";
-    this.name  = "Danya";
+    this.name  = "Danya D. Smith";
     this.logo  = "img/logo-color.svg";
   }
 
-  handleBlur(event: any) {
-    this.name = event.target.value;
-  }
-
-  handleInput(event: any) {
-    this.name = event.target.value;
+  handleChange(value: string) {
+    this.name = value;
   }
 
   handleClick() {
