@@ -10,6 +10,9 @@ import { Child } from '../../models/passenger.interface';
   <div>
     <h3>Airline Passengers</h3>
     <passenger-count [items]="passengers"></passenger-count>
+    <div *ngFor="let passenger of passengers;">
+      {{ passenger.fullname }}
+    </div>
     <passenger-detail *ngFor="let passenger of passengers;"
       [detail]="passenger"
       (edit)="handleEdit($event)"
@@ -69,11 +72,9 @@ export class PassengerDashboardComponent implements OnInit {
       }
       return passenger;
     });
-    console.log(this.passengers);
   }
 
   handleRemove(event: Passenger) {
-    console.log(event);
     this.passengers = this.passengers.filter((passenger: Passenger) => {
       return passenger.id !== event.id;
     });
