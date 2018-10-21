@@ -6,6 +6,8 @@ import { PassengerDashboardComponent } from './containers/passenger-dashboard/pa
 import { PassengerCountComponent } from './components/passenger-count/passenger-count.component';
 import { PassengerDetailComponent } from './components/passenger-detail/passenger-detail.component';
 
+import { PassengerDashboardService } from './passenger-dashboard.service';
+
 @NgModule({
   declarations: [
     PassengerDashboardComponent,
@@ -17,6 +19,9 @@ import { PassengerDetailComponent } from './components/passenger-detail/passenge
   ],
   exports: [
     PassengerDashboardComponent
+  ],
+  providers: [
+    PassengerDashboardService
   ]
 })
 
