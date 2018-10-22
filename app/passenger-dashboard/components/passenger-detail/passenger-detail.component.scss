@@ -4,8 +4,8 @@
   height: 10px;
   background: #c0392b;
   display: block;
-  margin: 8px 10px 0 0;
   float: left;
+  margin: 11px 5px 0 0;
   border-radius: 50%;
   &.checked-in {
     background: #2ecc71;
@@ -13,3 +13,15 @@
 }
 
 
+div {
+  border-bottom: 1px solid #ccc;
+  padding: 3px;
+  div {
+    border: none;
+    display: inline-block;
+    min-width: 50px;
+    &+div {
+      min-width: 210px;
+    }
+  }
+}
