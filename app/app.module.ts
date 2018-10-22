@@ -7,9 +7,11 @@ import { PassengerDashboardModule } from "./passenger-dashboard/passenger-dashbo
 
 import  { AppComponent } from "./app.component";
 import  { HomeComponent } from "./home.component";
+import  { NotFoundComponent } from "./not-found.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent, pathMatch: "full" }
+  { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({
@@ -18,7 +20,8 @@ const routes: Routes = [
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
