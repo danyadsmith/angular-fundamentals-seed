@@ -11,9 +11,6 @@ import { IPassenger } from "../../models/passenger.interface";
   <div>
     <h3>Airline Passengers</h3>
     <passenger-count [items]="passengers"></passenger-count>
-    <div *ngFor="let passenger of passengers;">
-      {{ passenger.fullname }}
-    </div>
     <passenger-detail *ngFor="let passenger of passengers;"
       [detail]="passenger"
       (edit)="handleEdit($event)"
