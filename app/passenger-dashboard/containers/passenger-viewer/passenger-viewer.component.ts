@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { PassengerDashboardService } from '../../passenger-dashboard.service';
+import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
-import { Passenger } from '../../models/passenger.interface';
+import { Passenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-viewer',
-  styleUrls: ['passenger-viewer.component.scss'],
+  selector: "passenger-viewer",
+  styleUrls: ["passenger-viewer.component.scss"],
   template: `
     <div>
-      <passenger-form 
+      <passenger-form
         [detail]="passenger"
         (update)="onUpdatePassenger($event)">
       </passenger-form>
@@ -22,13 +22,13 @@ export class PassengerViewerComponent implements OnInit {
 
   constructor(private passengerService: PassengerDashboardService) { }
 
-  ngOnInit() { 
+  ngOnInit(): void {
     this.passengerService
       .getPassenger(1)
       .subscribe((data: Passenger) => this.passenger = data);
   }
 
-  onUpdatePassenger(event: Passenger) {
+  onUpdatePassenger(event: Passenger): void {
     console.log(event);
     this.passengerService
       .updatePassenger(event)
