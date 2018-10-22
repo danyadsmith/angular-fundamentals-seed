@@ -14,7 +14,7 @@ import { PassengerFormComponent } from "./components/passenger-form/passenger-fo
 import { PassengerDashboardService } from "./passenger-dashboard.service";
 
 const routes: Routes = [
-  { path: "passengers", 
+  { path: "passengers",
     children: [
       { path: "", component: PassengerDashboardComponent },
       { path: ":id", component: PassengerViewerComponent }

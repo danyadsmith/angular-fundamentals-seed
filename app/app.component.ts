@@ -1,10 +1,11 @@
 import { Component } from "@angular/core";
 
-interface Nav {
+interface INav {
   link: string;
   name: string;
   exact: boolean;
 }
+
 @Component({
   selector: "app-root",
   styleUrls: [
@@ -25,7 +26,7 @@ interface Nav {
 })
 
 export class AppComponent {
-  nav: Nav[] = [
+  nav: INav[] = [
     {
       link: "/",
       name: "Home",

@@ -1,8 +1,8 @@
-export interface Passenger {
-  id: number,
-  fullname: string,
-  checkedIn: boolean,
-  checkInDate?: number,
-  baggage: string
+export interface IPassenger {
+  id: number;
+  fullname: string;
+  checkedIn: boolean;
+  checkInDate?: number;
+  baggage: string;
 }
 

@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
-import { Passenger } from '../../models/passenger.interface';
+import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-count',
+  selector: "passenger-count",
   template: `
     <div>
       <div>
@@ -15,10 +15,10 @@ import { Passenger } from '../../models/passenger.interface';
 
 export class PassengerCountComponent {
   @Input()
-  items: Passenger[];
+  items: IPassenger[];
 
-  checkedInCount() {
-    if (!this.items) return;
-    return this.items.filter((passenger: Passenger) => passenger.checkedIn).length;
+  checkedInCount(): number {
+    if (!this.items) { return; }
+    return this.items.filter((passenger: IPassenger) => passenger.checkedIn).length;
   }
 }

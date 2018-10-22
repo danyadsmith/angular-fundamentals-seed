@@ -1,19 +1,19 @@
-import { Component, OnChanges, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
-import { Passenger } from '../../models/passenger.interface';
+import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-detail',
-  styleUrls: ['passenger-detail.component.scss'],
+  selector: "passenger-detail",
+  styleUrls: ["passenger-detail.component.scss"],
   template: `
     <div>
-      <span 
+      <span
         class="status"
         [class.checked-in]="detail.checkedIn">
       </span>
       <div *ngIf="editing">
-        <input 
-          type="text" 
+        <input
+          type="text"
           #name
           [value]="detail.fullname"
           (input)="onNameChange(name.value)"
@@ -23,9 +23,9 @@ import { Passenger } from '../../models/passenger.interface';
       {{ detail.fullname }}
       </div>
       <div class="date">
-        Check in date: 
-        {{ detail.checkInDate ? 
-            (detail.checkInDate | date: 'yMMMMd' | uppercase ) : 
+        Check in date:
+        {{ detail.checkInDate ?
+            (detail.checkInDate | date: 'yMMMMd' | uppercase ) :
             'Not checked in' }}
       </div>
       <button (click)="toggleEdit()">
@@ -38,43 +38,41 @@ import { Passenger } from '../../models/passenger.interface';
   `
 })
 
-export class PassengerDetailComponent implements OnChanges, OnInit {
+export class PassengerDetailComponent implements OnChanges {
   @Input()
-  detail: Passenger;
+  detail: IPassenger;
 
   @Output()
-  edit: EventEmitter<any> = new EventEmitter();  
+  edit: EventEmitter<any> = new EventEmitter();
 
   @Output()
   remove: EventEmitter<any> = new EventEmitter();
 
   editing: boolean;
 
-  constructor() { 
+  constructor() {
     this.editing = false;
   }
 
-  ngOnChanges(changes) {
+  ngOnChanges(changes: any): void {
     if (changes.detail) {
       this.detail = Object.assign({}, changes.detail.currentValue);
     }
   }
 
-  ngOnInit() { }
-
-  onNameChange(value: string) {
+  onNameChange(value: string): void {
     this.detail.fullname = value;
   }
 
-  toggleEdit() {
+  toggleEdit(): void {
     if (this.editing) {
       this.edit.emit(this.detail);
     }
     this.editing = !this.editing;
   }
 
-  onRemove() {
-    this.remove.emit(this.detail);  
+  onRemove(): void {
+    this.remove.emit(this.detail);
   }
 }
 

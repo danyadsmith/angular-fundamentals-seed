@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { PassengerDashboardService } from '../../passenger-dashboard.service';
+import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
-import { Passenger } from '../../models/passenger.interface';
+import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
-  selector: 'passenger-dashboard',
-  styleUrls: ['passenger-dashboard.component.scss'],
+  selector: "passenger-dashboard",
+  styleUrls: ["passenger-dashboard.component.scss"],
   template: `
   <div>
     <h3>Airline Passengers</h3>
@@ -24,34 +24,34 @@ import { Passenger } from '../../models/passenger.interface';
 })
 
 export class PassengerDashboardComponent implements OnInit {
-  passengers: Passenger[];
+  passengers: IPassenger[];
 
   constructor(private passengerService: PassengerDashboardService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.passengerService
       .getPassengers()
-      .subscribe((data: Passenger[]) => this.passengers = data);
+      .subscribe((data: IPassenger[]) => this.passengers = data);
   }
 
-  handleEdit(event: Passenger) {
+  handleEdit(event: IPassenger): void {
     this.passengerService
       .updatePassenger(event)
-      .subscribe((data: Passenger) => {
-        this.passengers = this.passengers.map((passenger: Passenger) => {
+      .subscribe((data: IPassenger) => {
+        this.passengers = this.passengers.map((passenger: IPassenger) => {
           if (passenger.id === event.id) {
-            passenger = Object.assign({}, passenger, event); 
+            passenger = Object.assign({}, passenger, event);
           }
           return passenger;
         });
       });
   }
 
-  handleRemove(event: Passenger) {
+  handleRemove(event: IPassenger): void {
     this.passengerService
       .removePassenger(event)
-      .subscribe((data: Passenger) => {
-        this.passengers = this.passengers.filter((passenger: Passenger) => {
+      .subscribe((data: IPassenger) => {
+        this.passengers = this.passengers.filter((passenger: IPassenger) => {
           return passenger.id !== event.id;
         });
       });

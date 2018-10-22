@@ -1,4 +1,4 @@
-export interface Baggage {
-  key: string,
-  value: string
+export interface IBaggage {
+  key: string;
+  value: string;
 }

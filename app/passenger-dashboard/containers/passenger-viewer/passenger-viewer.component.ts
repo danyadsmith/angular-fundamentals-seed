@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { PassengerDashboardService } from "../../passenger-dashboard.service";
 
-import { Passenger } from "../../models/passenger.interface";
+import { IPassenger } from "../../models/passenger.interface";
 
 @Component({
   selector: "passenger-viewer",
@@ -18,21 +18,21 @@ import { Passenger } from "../../models/passenger.interface";
 })
 
 export class PassengerViewerComponent implements OnInit {
-  passenger: Passenger;
+  passenger: IPassenger;
 
   constructor(private passengerService: PassengerDashboardService) { }
 
   ngOnInit(): void {
     this.passengerService
       .getPassenger(1)
-      .subscribe((data: Passenger) => this.passenger = data);
+      .subscribe((data: IPassenger) => this.passenger = data);
   }
 
-  onUpdatePassenger(event: Passenger): void {
+  onUpdatePassenger(event: IPassenger): void {
     console.log(event);
     this.passengerService
       .updatePassenger(event)
-      .subscribe((data: Passenger) => {
+      .subscribe((data: IPassenger) => {
         this.passenger = Object.assign({}, this.passenger, event);
       });
   }
