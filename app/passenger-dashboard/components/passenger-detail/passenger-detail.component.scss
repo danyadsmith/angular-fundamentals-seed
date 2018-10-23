@@ -21,7 +21,13 @@ div {
     display: inline-block;
     min-width: 50px;
     &+div {
-      min-width: 210px;
+      min-width: 250px;
+    }
+  }
+  @media (min-width: 650px) {
+    button {
+      float: right;
+      margin-left: 5px;
     }
   }
 }

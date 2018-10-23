@@ -33,7 +33,7 @@ export class PassengerViewerComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((data: Params) =>  this.passengerService .getPassenger(data.id))
+      .switchMap((data: IPassenger) =>  this.passengerService.getPassenger(data.id))
       .subscribe((data: IPassenger) => this.passenger = data);
   }
 
